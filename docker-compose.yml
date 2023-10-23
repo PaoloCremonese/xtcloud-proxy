@@ -61,8 +61,8 @@ services:
       - DB_DUMP_TARGET=/db
       - SMB_USER=cremonese
       - SMB_PASS=Teledata011
-      - DB_USER=adminAgPVh9q
-      - DB_PASS=8fRB2AWC92Mi
+      - DB_USER=adminjrSz1hq
+      - DB_PASS=uQx2ENIP471r
       - DB_DUMP_BEGIN=0808                    # WARNING .. USE GMT TIME !!!
       - DB_SERVER=db
       - DB_DUMP_DEBUG=true
