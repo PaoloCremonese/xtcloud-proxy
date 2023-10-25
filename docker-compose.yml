@@ -26,12 +26,12 @@ services:
       - "127.0.0.1:8443:8443" # application SSL HTTPS
       - "127.0.0.1:9990:9990" # admin console
     networks:
-      scloud-net: 
+      xtcloud-net: 
         ipv4_address: 172.20.0.3
         
         
   db:
-    container_name: "db-prelive"
+    container_name: "db-xtcloud"
     image: "mysql:5.7"
     environment:
       - MYSQL_DATABASE=telecloud
@@ -44,11 +44,11 @@ services:
     ports:
       - "127.0.0.1:3306:3306"
     networks:
-      scloud-net: 
+      xtcloud-net: 
         ipv4_address: 172.20.0.2
 
   backup:
-    container_name: "pl-backup"
+    container_name: "xt-backup"
     image: databack/mysql-backup
     restart: always
     user: "0"
@@ -71,7 +71,7 @@ services:
       - db
       - app    
     networks:
-      scloud-net: 
+      xtcloud-net: 
         ipv4_address: 172.20.0.4
 
   reverse:
@@ -91,7 +91,7 @@ services:
     depends_on:
       - app    
     networks:
-      scloud-net: 
+      xtcloud-net: 
         ipv4_address: 172.20.0.5
     
     
@@ -101,7 +101,7 @@ services:
 #        driver: bridge
    
 networks:
-  scloud-net: 
+  xtcloud-net: 
     driver: bridge
     ipam:
       config:

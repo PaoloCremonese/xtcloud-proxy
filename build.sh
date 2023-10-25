@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Build XTCLOUD script
+# Build XTCLOUD-PROXY script
 
-echo "Build XTCLOUD containers"
+echo "Build XTCLOUD-PROXY containers"
 
 # 1.  stop containers
 echo "Stop containers"
