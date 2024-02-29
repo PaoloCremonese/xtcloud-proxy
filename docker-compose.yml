@@ -63,7 +63,7 @@ services:
       - SMB_PASS=Teledata011
       - DB_USER=adminjrSz1hq
       - DB_PASS=uQx2ENIP471r
-      - DB_DUMP_BEGIN=0808                    # WARNING .. USE GMT TIME !!!
+      - DB_DUMP_BEGIN=0030                    # WARNING .. USE GMT TIME !!!
       - DB_SERVER=db
       - DB_DUMP_DEBUG=true
       - DB_DUMP_SAFECHARS=true
@@ -88,6 +88,8 @@ services:
     volumes:
 #      - //home/teledata/scloud-proxy/TeleCLOUD/prelive/nginx/conf:/etc/nginx                  # Configurazione NGINX
       - /home/teledata/xtcloud-proxy/TeleCLOUD/xtcloud/nginx/certificati:/etc/ssl/private      # Certificati SSL
+      - /home/teledata/xtcloud-proxy/TeleCLOUD/xtcloud/nginx/wwwroot:/var/www/certbot          # WWW root for certificate renewal ACME engine
+      - /home/teledata/xtcloud-proxy/TeleCLOUD/xtcloud/nginx/letsencrypt:/etc/letsencrypt      # WWW root for certificate renewal repo
     depends_on:
       - app    
     networks:
@@ -95,6 +97,14 @@ services:
         ipv4_address: 172.20.0.5
     
     
+  certbot:
+    container_name: certbot
+    image: certbot/certbot
+    volumes:
+      - /home/teledata/xtcloud-proxy/TeleCLOUD/xtcloud/nginx/letsencrypt:/etc/letsencrypt      # WWW root for certificate renewal storing
+      - /home/teledata/xtcloud-proxy/TeleCLOUD/xtcloud/nginx/wwwroot:/var/www/certbot          # WWW root for certificate renewal
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 89d & wait $${!}; done;'"
+
 
 #networks:
 #    default:

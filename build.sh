@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Build XTCLOUD-PROXY script
+# Build XTCLOUD_PROXY script
 
-echo "Build XTCLOUD-PROXY containers"
+echo "Build XTCLOUD_PROXY containers"
 
 # 1.  stop containers
 echo "Stop containers"
@@ -19,7 +19,7 @@ echo "Start containers again"
 cd /home/teledata/xtcloud-proxy
 docker compose up --detach
 
-echo "DONE !!!"
+echo "XTCLOUD_PROXY DONE !!!"
 
 
 
