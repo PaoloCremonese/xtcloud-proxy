@@ -442,7 +442,7 @@
                 <http-listener name="default" socket-binding="http"/>
 		<https-listener name="https" socket-binding="https" security-realm="SSLRealm"/>
                 <host name="default-host" alias="localhost">
-                    <location name="/directory-listing-uri" handler="directory-listing-handler"/>
+                    <location name="/telecloud/directory-listing-uri" handler="directory-listing-handler"/>
                     <location name="/" handler="welcome-content"/>
                     <location name="/.well-known" handler="well-known-handler"/>
                     <filter-ref name="server-header"/>
